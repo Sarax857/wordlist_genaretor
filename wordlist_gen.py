@@ -1,19 +1,18 @@
-Python 3.9.2 (tags/v3.9.2:1a79785, Feb 19 2021, 13:44:55) [MSC v.1928 64 bit (AMD64)] on win32
-Type "help", "copyright", "credits" or "license()" for more information.
->>> 
-============ RESTART: C:\Users\ADMIN\OneDrive\Masaüstü\wordlistgn.py ===========
+import itertools 
+import time
+import sys
 
+
+info = '''
                               
 ######################################################
                 By                            
 ######################################################
 
-    Suraj Singh
+    Sarax
      
      
-    surajsinghbisht054@gmail.com
-    http://www.bitforestinfo.com/
-
+    discord : Sarax.srx#0236
      
 ######################################################
 
@@ -27,38 +26,59 @@ usages Example:>>
         please enetr here name of Wordlist :>>>pass.txt
 **********************************************************************
 **********************************************************************
+'''
+print(info)
+print ("")
+chrs=input("[+] Please Enter Here All Word for combination :>> ")
 
+l=int(input("[+] Please Enter Minimum Lenth Of Words  : >>  "))
+k = l
 
-[+] Please Enter Here All Word for combination :>> abcdg
-[+] Please Enter Minimum Lenth Of Words  : >>  2
-[+] Please Enter Maximum Lenth Of Words  : >>  4
-[+] Please Enetr Here Name Of Wordlist File :>>> deneme.txt
-[+] Numbers Of Total Lines :  775
-[+] Are You Ready ?[Press Enter]
+j=int(input("[+] Please Enter Maximum Lenth Of Words  : >>  "))
+n = j+1
 
+mtl=len(chrs)
+p=[]
+zt = input("[+] Please Enetr Here Name Of Wordlist File :>>> ")
+for ltp in range(k, n):
+ ans=mtl**ltp
+ p.append(ans)
+tline=sum(p)
+print ("[+] Numbers Of Total Lines : ", tline)
+input('[+] Are You Ready ?[Press Enter]')
 
-+++++++++++++++++++++++++ Please Wait ++++++++++++++++++++++++++++++++++++++++
- 
+print( "\n\n+++++++++++++++++++++++++ Please Wait ++++++++++++++++++++++++++++++++++++++++\n \n")
+time1=time.asctime()
+start=time.time()
 
+psd = open(zt, 'a')
+for i in range(k,n):
+  r=i*100/n
+  l=str(r)+' percent '
+  sys.stdout.write("\r%s" % l)
+  sys.stdout.flush()
+  psd.flush()
+  for xs in itertools.product(chrs, repeat=i):
+    psd.write(''.join(xs)+'\n')
+psd.flush()    
+psd.close()
+sys.stdout.write("\rDone Sucessfully")
+print ('\n\n+++++++++++++++++++++++++ Process Report +++++++++++++++++++++++++++++++++++++\n')
+print ('\t [+] Process Started                      :   ', time1)
+end=time.time()
+print ('\t [+] Process Completed                    :   ', time.asctime())
+totaltime=end-start
+print ('\t [+] Total Time Consumed                  :   ', totaltime, 'second')
+rate=tline/totaltime
+print ('\t [+] Rate Of Words Generating Per Seconds :   ', rate) 
 
-40.0 percent 
-60.0 percent 
-80.0 percent 
-Done Sucessfully
+print ('\n+++++++++++++++++++++++++ Please Wait ++++++++++++++++++++++++++++++++++++++++')
 
-+++++++++++++++++++++++++ Process Report +++++++++++++++++++++++++++++++++++++
+print ('''
+\t***************************************************
+\t*       Successfully created thanks for using     *
+\t***************************************************
 
-	 [+] Process Started                      :    Wed Nov 17 15:50:35 2021
-	 [+] Process Completed                    :    Wed Nov 17 15:50:35 2021
-	 [+] Total Time Consumed                  :    0.02399611473083496 second
-	 [+] Rate Of Words Generating Per Seconds :    32296.895088775622
-
-+++++++++++++++++++++++++ Please Wait ++++++++++++++++++++++++++++++++++++++++
-
-	***************************************************
-	*       Successfully created thanks for using     *
-	***************************************************
-
-
-
-[*] Press Enter For Exit
+''')
+print ("")
+input("[*] Press Enter For Exit")
